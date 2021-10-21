@@ -3,30 +3,21 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
-public static void main(String[] args)
-	{
-		
-		
-	
-		
-
-	}
-
-
 public class CreditCardRunner
 	{
+		public static void main(String[] args) throws IOException
+			{
+				//LuhnChecker.reader();
+				LuhnChecker.algorithm();
+	
+			}
+
+	
+
+
 	
 		
-			Scanner Searcher = new Scanner(new File("CreditCardFile.txt"));
-				
 		
-			
-			while(Searcher.hasNext())
-					{
-					String sentence = Searcher.nextLine();
-					System.out.println(sentence);
-					
-				
-					}
 
 	}	
+
