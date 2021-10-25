@@ -7,8 +7,8 @@ public class CreditCardRunner
 	{
 		public static void main(String[] args) throws IOException
 			{
-				//LuhnChecker.reader();
-				LuhnChecker.algorithm();
+				LuhnChecker.reader();
+				//LuhnChecker.algorithm();
 	
 			}
 

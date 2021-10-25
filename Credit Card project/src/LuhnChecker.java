@@ -5,6 +5,11 @@ import java.io.IOException;
 public class LuhnChecker
 	{
 
+		static long [] cardFile = new long [16];
+		static long ccNumber;
+		static long displayNumber;
+		static int counter = 0;
+
 		
 		public static void reader() throws IOException
 			{
@@ -15,55 +20,62 @@ public class LuhnChecker
 					
 					while(Searcher.hasNext())
 							{
-							String sentence = Searcher.nextLine();
-							System.out.println(sentence);
-							
+							ccNumber = Searcher.nextLong();
+							ccNumber = displayNumber;
+							algorithm();
 						
 							}
 			
-			
+			System.out.println(counter);
 			}
 		
 		
 		public static void algorithm()
 			{
 
-		int sum = 0;
+		int index = 15;
+		while(ccNumber > 0 )
+			{
+				cardFile[index] = ccNumber % 10;
+				
+				ccNumber = ccNumber / 10;
+				
+				index--;
+			}
 		
-		int [] ccnumber = {5,4,2,4,1,8,0,1,2,3,4,5,6,7,8,9};
-		int [] ccnumbereven = {4,4,8,1,3,5,7,9};
 		
-		for(int i = 0; i < ccnumber.length; i = i + 2)
+		
+		for(int i = 0; i < cardFile.length; i = i + 2)
 			{
 			
-				if(ccnumber[i] * 2 > 9)
+				if(cardFile[i] * 2 > 9)
 					{
 					
-						sum = sum + ccnumber[i] * 2 / 10 + ccnumber[i] * 2 % 10;
-						System.out.println(sum);
+						cardFile[i] = cardFile[i] + cardFile[i] * 2 / 10 + cardFile[i] * 2 % 10;
+						System.out.println(cardFile);
 				
 					}
 				
 				else
 					{
 						
-						sum = sum + ccnumber[i] * 2;
+						cardFile[i] = cardFile[i] + cardFile[i] * 2;
 					}
 			
 	
 		}
 
-		for(int n = 1; n < ccnumber.length; n = n + 2)
+		for(int n = 1; n < cardFile.length; n = n + 2)
 			{
 				
-				sum = sum + ccnumber[n];
+				cardFile[n] = cardFile[n] + cardFile[n];
 			}
 		
-		System.out.println(sum);
+		System.out.println(counter);
 		
 			
 		
-		if(sum % 10 == 0)
+		if(counter % 10 == 0)
 			{
 				System.out.println("valid credit card");
 			}
